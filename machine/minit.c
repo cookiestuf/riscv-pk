@@ -34,6 +34,10 @@ static void mstatus_init()
   // Disable paging
   if (supports_extension('S'))
     write_csr(sptbr, 0);
+
+  // Wire up events
+  write_csr(mhpmevent3,  (1 << (3 + EVENT_SET_BITS)) + 1); // icache blockedl
+  write_csr(mhpmevent4,  (1 << (4 + EVENT_SET_BITS)) + 1); // dcache blocked
 }
 
 // send S-mode interrupts and most exceptions straight to S-mode
