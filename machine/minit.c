@@ -17,6 +17,9 @@ volatile uint64_t* mtime;
 volatile uint32_t* plic_priorities;
 size_t plic_ndevs;
 
+
+#define EVENT_SET_BITS 8
+
 static void mstatus_init()
 {
   // Enable FPU
